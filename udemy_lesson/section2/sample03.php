@@ -8,7 +8,7 @@
 </head>
 <body>
     <?php
-        echo "I'm studying!'";
+        echo 123 + 2 * 5 / 3;
     ?>
 </body>
 </html>
