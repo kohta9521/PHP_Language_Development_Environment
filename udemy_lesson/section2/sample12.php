@@ -1,10 +1,10 @@
 <?php
-
-$time = 10;
+date_default_timezone_set('Asia/Tokyo');
+$time = date('G');
 
 ?>
 
-<?php if ($time < 9): ?>
+<?php if ($time < 17): ?>
 <p>※営業時間外です</p>
 <?php else: ?>
 <p>ようこそ</p>
