@@ -14,8 +14,14 @@ class CreateMemosTable extends Migration
     public function up()
     {
         Schema::create('memos', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->unsignedBigInteger('id', true);
+            $table->longText('content');
+            $table->unsignedBigInteger('user_id');
+            $table->softDeletes();
+            // timestampと書いてしまうと、レコード挿入時に更新値が入らないのでDB::rowで書いています
+            $table->timesramp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
+            $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
